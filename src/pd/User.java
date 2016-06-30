@@ -5,17 +5,17 @@ import java.util.ArrayList;
 public class User {
 
 	//家庭逻辑类
-	private int restMoney;
+	private int balance;
 	private String name;
 	private String password;
 	private ArrayList<Record> records;
 
 	public int getRestMoney() {
-		return restMoney;
+		return balance;
 	}
 
 	public void setRestMoney(int restMoney) {
-		this.restMoney = restMoney;
+		this.balance = restMoney;
 	}
 
 	public String getName() {
