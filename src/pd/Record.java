@@ -1,15 +1,23 @@
 package pd;
 import java.util.Calendar;
+import java.util.Date;
 public class Record {
-	private Calendar cdate;
+	private Date cdate;
 	private boolean isOut;//是否是收入还是支出
 	private double money;
 	private String things;
 	private String other;
-	public Calendar getCdate() {
+	public Record(){}
+	public Record(Date date,double money,String things,String other){
+		this.setCdate(date);
+		this.setMoney(money);
+		this.setThings(things);
+		this.setOther(other);		
+	}
+	public Date getCdate() {
 		return cdate;
 	}
-	public void setCdate(Calendar cdate) {
+	public void setCdate(Date cdate) {
 		this.cdate = cdate;
 	}
 	public boolean isOut() {

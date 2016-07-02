@@ -1,25 +1,32 @@
 package se;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
-import pd.Record;
+import java.util.ArrayList;
 import pd.User;
+import pd.Record;
+import java.util.Calendar;
 /**
- * Servlet implementation class QueryBalance
+ * Servlet implementation class query_finance
  */
-@WebServlet("/QueryBalance")
-public class QueryBalance extends HttpServlet {
+@WebServlet(
+		name = "QueryFinance", 
+		urlPatterns = { 
+				"/QueryFinance", 
+				"/servlet/QueryFinance"
+		})
+public class QueryFinance extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public QueryBalance() {
+    public QueryFinance() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,14 +36,17 @@ public class QueryBalance extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
-		response.setContentType("text/html");
-		User res = new User();
-		res.setRestMoney(100);
-		res.setName("wangruoxuan");
-		request.getSession().setAttribute("balance",res);
-		//out.println(res.getName());
-		response.sendRedirect("/repair/query_money.jsp");
+		response.setCharacterEncoding("UTF-8");
+		User now = null;
+		Record r = null;
+		ArrayList<Record> rlist = new ArrayList<Record>();
+		for(int i = 0;i<10;i++){
+			Calendar ca = Calendar.getInstance();
+			rlist.add(new Record(ca.getTime(),100+i*10,"aa","bb"));
+		}
+		request.getSession().setAttribute("finance", rlist);
+		response.sendRedirect("/repair/finance_report.jsp");
+		
 	}
 
 	/**
