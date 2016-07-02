@@ -1,14 +1,20 @@
-﻿<!DOCTYPE html>
+﻿<%@ page language="java" import="java.util.*,pd.User,pd.Record" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE html>
 <html>
   <head>
-    <title>report</title>
+    <title>finance_report</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <link href="resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
     <link href="resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
     <link href="data/styles.css" type="text/css" rel="stylesheet"/>
-    <link href="files/report/styles.css" type="text/css" rel="stylesheet"/>
+    <link href="files/finance_report/styles.css" type="text/css" rel="stylesheet"/>
     <script src="resources/scripts/jquery-1.7.1.min.js"></script>
     <script src="resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
     <script src="resources/scripts/axure/axQuery.js"></script>
@@ -37,7 +43,7 @@
     <script src="resources/scripts/axure/adaptive.js"></script>
     <script src="resources/scripts/axure/tree.js"></script>
     <script src="resources/scripts/axure/init.temp.js"></script>
-    <script src="files/report/data.js"></script>
+    <script src="files/finance_report/data.js"></script>
     <script src="resources/scripts/axure/legacy.js"></script>
     <script src="resources/scripts/axure/viewer.js"></script>
     <script type="text/javascript">
@@ -48,37 +54,45 @@
   </head>
   <body>
     <div id="base" class="">
-
       <!-- Unnamed (Shape) -->
       <div id="u0" class="ax_h1">
         <img id="u0_img" class="img " src="resources/images/transparent.gif"/>
         <!-- Unnamed () -->
         <div id="u1" class="text">
-          <p><span>报表管理</span></p>
+          <p><span>财务报表</span></p>
         </div>
       </div>
-
-      <!-- Unnamed (HTML Button) -->
-      <div id="u2" class="ax_html_button">
-        <input id="u2_input" type="submit" value="财务报表"/>
+     <div id="u2" class="ax_table">
+      	<table border="5">
+      		<caption>收支报表</caption>
+      		<tr>
+      			<td>日期</td>
+      			<td>收入支出</td>
+      			<td>类型</td>
+      		</tr>
+      		<tr>
+      			<td>xxx</td>
+      			<td>xxx</td>
+      			<td>xxx</td>
+      		</tr>
+      		<%
+      			
+      			ArrayList<Record> rlist = null;
+      			if(session.getAttribute("finance")!=null){
+      				rlist = (ArrayList<Record>)session.getAttribute("finance");
+      			}
+      			for(Iterator it = rlist.iterator();it.hasNext();){
+      				out.println("<tr>");
+      				Record now = (Record)it.next();
+      				
+      				out.println("<td>"+now.getCdate().toString()+"</td>");
+      				out.println("<td>"+now.getMoney()+"</td>");
+      				out.println("<td>"+now.getThings()+"</td>");
+      				out.println("</tr>");
+      			}
+      		 %>
+      	</table>
+      	
       </div>
-
-      <!-- Unnamed (HTML Button) -->
-      <div id="u3" class="ax_html_button">
-        <input id="u3_input" type="submit" value="消费报表"/>
-      </div>
-
-      <!-- Unnamed (HTML Button) -->
-      <form action="servlet/QueryBalance" method ="get">
-      <div id="u4" class="ax_html_button">
-        <input id="u4_input" type="submit" value="查询余额"/>
-      </div>
-      </form>
-      
-      <!-- Unnamed (HTML Button) -->
-      <div id="u5" class="ax_html_button">
-        <input id="u5_input" type="submit" value="返回首页"/>
-      </div>
-    </div>
   </body>
 </html>

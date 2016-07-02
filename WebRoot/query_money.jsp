@@ -1,4 +1,8 @@
-﻿
+﻿<%@ page language="java" import="java.util.*,pd.User" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 
 <html>
@@ -64,11 +68,27 @@
       <div id="u2" class="ax_html_button">
         <input id="u2_input" type="submit" value="返回"/>
       </div>
-
+       <%
+      User now = null;
+      String res = "";
+      if(session.getAttribute("balance")!=null){
+      	now = (User)session.getAttribute("balance");
+      	//out.println("input id ="+"u4_input"+" type="+"text");
+      	//out.println(now.getName());
+      	res = now.getName();
+      	
+      }
+       %>
+       <%
+       request.setCharacterEncoding("UTF-8");
+       
+        %>
       <!-- Unnamed (Text Field) -->
       <div id="u3" class="ax_text_field">
-        <input id="u3_input" type="text" value="" readonly/>
+        <!-- <input id="u3_input" type="text" value= readonly/>  -->
+        余额为<font color="red"> <%=res%></h1>
       </div>
+     
     </div>
   </body>
 </html>
