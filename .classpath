@@ -19,5 +19,7 @@
 			<attribute name="owner.project.facets" value="jst.web.jstl"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/wangruoxuan/Workspaces/mysql-connector-java-5.1.39/mysql-connector-java-5.1.39-bin.jar"/>
+	<classpathentry kind="lib" path="/Users/wangruoxuan/Workspaces/mysql-connector-java-5.1.39.zip"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>

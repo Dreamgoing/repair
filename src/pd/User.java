@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class User {
 
 	//家庭逻辑类
-	private int balance;
+	private double balance;
 	private String name;
 	private String password;
 	private ArrayList<Record> records;
 
-	public int getRestMoney() {
+	public double getRestMoney() {
 		return balance;
 	}
 
-	public void setRestMoney(int restMoney) {
+	public void setRestMoney(double restMoney) {
 		this.balance = restMoney;
 	}
 
