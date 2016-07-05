@@ -35,8 +35,12 @@ public class QueryBalance extends HttpServlet {
 		res.setRestMoney(100);
 		res.setName("wangruoxuan");
 		request.getSession().setAttribute("balance",res);
+		//获得累计消费 数据库类
 		//out.println(res.getName());
-		response.sendRedirect("/repair/query_money.jsp");
+		double outMoneyd = 1999.99;
+		Double outMoney = new Double(outMoneyd);
+		request.getSession().setAttribute("outMoney", outMoney);
+		response.sendRedirect("/repair/report.jsp");
 	}
 
 	/**
