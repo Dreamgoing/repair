@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+import db.DataVisit;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -43,34 +45,48 @@ public class TestDB extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.setContentType("text/html");
+		response.setContentType("text/html;charset=UTF-8");
+		
 		PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
 		out.println("<HTML>");
 		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
 		out.println("  <BODY>");
 		out.print("    This is ");
+		
 		//String url = "jdbc:mysql://localhost:3306/
                 
-	 Connection conn = null;
+		Connection conn = null;
+		try {
+			conn = DataVisit.getConnection();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		if(conn==null){
+			out.print("no");
+		}
 	 
-	 try {
+	 /*try {
+		 request.setCharacterEncoding("UTF-8");
+		 response.setCharacterEncoding("UTF-8");
+	
 		 Class.forName("com.mysql.jdbc.Driver");
 		 out.println("ok");
-		 conn = DriverManager.getConnection("jdbc:mysql://localhost/finance?useUnicode=true&characterEncoding=UTF-8","root","123456");
+		 conn = DriverManager.getConnection("jdbc:mysql://localhost/fdb?useUnicode=true&characterEncoding=UTF-8","root","123456");
 		 out.println("connect");
 		 
 	} catch (Exception e) {
 		out.println("failure");
 		e.printStackTrace();
 		// TODO: handle exception
-	}
+	}*/
 	 	try {
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery("select * from user");
 			while (res.next()) {
-				out.println(res.getString("name")+ " "+
-			res.getString("password")+" "+res.getDouble("balance"));
+				out.println(res.getString("U_name")+ " "+
+			res.getString("U_password")+" "+res.getDouble("U_balance"));
 				
 			}
 		} catch (SQLException e) {
