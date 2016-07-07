@@ -66,14 +66,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<table border="5">
       		<caption>收支报表</caption>
       		<tr>
+      			<td>编号</td>
       			<td>日期</td>
-      			<td>收入支出</td>
+      			<td>收入者／支出者</td>
       			<td>类型</td>
+      			<td>金额</td>
+      			<td>目的</td>
+      			<td>其他</td>
       		</tr>
       		<tr>
       			<td>xxx</td>
       			<td>xxx</td>
       			<td>xxx</td>
+      			<td>xxx</td>
+      			<td>xxx</td>
+      			<td>xxx</td>
+      			<td>xxx</td>
+      			
       		</tr>
       		<%
       			
@@ -84,10 +93,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       			for(Iterator it = rlist.iterator();it.hasNext();){
       				out.println("<tr>");
       				Record now = (Record)it.next();
-      				
+      				out.println("<td>"+now.getNum()+"</td>");
       				out.println("<td>"+now.getCdate().toString()+"</td>");
-      				out.println("<td>"+now.getMoney()+"</td>");
-      				out.println("<td>"+now.getThings()+"</td>");
+      				out.println("<td>"+now.getName()+"</td>");
+      				out.println("<td>"+now.getType()+"</td>");
+      				if(now.isOut()){
+      					out.println("<td>-"+now.getSum()+"</td>");
+      				}else{
+      					out.println("<td>"+now.getSum()+"</td>");
+      				}
+      				out.println("<td>"+now.getPropose()+"</td>");
+      				out.println("<td>"+now.getOther()+"</td>");
       				out.println("</tr>");
       			}
       		 %>

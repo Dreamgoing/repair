@@ -1,12 +1,17 @@
 package se;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import db.Report;
+
 import java.io.PrintWriter;
+
 import pd.Record;
 import pd.User;
 /**
@@ -32,12 +37,14 @@ public class QueryBalance extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		User res = new User();
-		res.setRestMoney(100);
-		res.setName("wangruoxuan");
+		res.setRestMoney(Report.getQueryBalance("王若璇"));
+		//res.setName("wangruoxuan");
+		res.setName("王若璇");
 		request.getSession().setAttribute("balance",res);
 		//获得累计消费 数据库类
 		//out.println(res.getName());
-		double outMoneyd = 1999.99;
+		Report.updateBalance("王若璇");
+		double outMoneyd = Report.getQueryConsum("王若璇");
 		Double outMoney = new Double(outMoneyd);
 		request.getSession().setAttribute("outMoney", outMoney);
 		response.sendRedirect("/repair/report.jsp");

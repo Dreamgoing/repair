@@ -1,4 +1,7 @@
 package se;
+import db.Report;
+import pd.Record;
+import pd.User;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -7,6 +10,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import db.DataVisit;
 
@@ -81,7 +86,7 @@ public class TestDB extends HttpServlet {
 		e.printStackTrace();
 		// TODO: handle exception
 	}*/
-	 	try {
+	 	/*try {
 			Statement stmt = conn.createStatement();
 			ResultSet res = stmt.executeQuery("select * from user");
 			while (res.next()) {
@@ -92,7 +97,14 @@ public class TestDB extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+	 	double balance = Report.getQueryBalance("王若璇");
+	 	out.println("余额为"+balance);
+	 	ArrayList<Record> r = Report.getQueryFinance("王若璇");
+	 	for(Iterator<Record> it = r.iterator();it.hasNext();){
+	 		Record now = it.next();
+	 		out.println(now.getCdate()+" "+now.getSum()+" "+now.getType());
+	 	}
 	 	//out.print("adfadsf");
 		out.print(this.getClass());
 		out.println(", using the GET method");

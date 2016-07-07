@@ -1,5 +1,5 @@
 package se;
-
+import db.Report;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -46,12 +46,7 @@ public class QueryFinance extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		User now = null;
 		Record r = null;
-		ArrayList<Record> rlist = new ArrayList<Record>();
-		for(int i = 0;i<10;i++){
-			Calendar ca = Calendar.getInstance();
-			rlist.add(new Record(ca.getTime(),100+i*10,"aa","bb"));
-		}
-	
+		ArrayList<Record> rlist = Report.getQueryFinance("王若璇");
 		request.getSession().setAttribute("finance", rlist);
 		//out.print("ok!");
 		response.sendRedirect("/repair/report.jsp");
