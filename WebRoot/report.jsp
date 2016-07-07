@@ -212,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <img id="u25_img" class="img " src="images/report/u21.png"/>
         <!-- Unnamed () -->
         <div id="u26" class="text">
-          <p><span><a href=index.jsp>返回首页</a></span></p>
+          <p><span><a href=home.jsp>返回首页</a></span></p>
         </div>
       </div>
     </div>
