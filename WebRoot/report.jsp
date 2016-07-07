@@ -105,13 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
               </div>
             </div>
                       <!-- Unnamed (Shape) -->
-            <div id="u8" class="ax_shape">
-              <img id="u8_img" class="img " src="images/report/u8.png"/>
-              <!-- Unnamed () -->
-              <div id="u9" class="text">
-                <p><span>返回</span></p>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div id="u5_state1" class="panel_state" data-label="State2">
@@ -177,13 +171,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
 
             <!-- Unnamed (Shape) -->
-            <div id="u18" class="ax_shape">
-              <img id="u18_img" class="img " src="images/report/u8.png"/>
-              <!-- Unnamed () -->
-              <div id="u19" class="text">
-               	<a href="report.jsp">返回</a>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -224,7 +212,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <img id="u25_img" class="img " src="images/report/u21.png"/>
         <!-- Unnamed () -->
         <div id="u26" class="text">
-          <p><span>返回首页</span></p>
+          <p><span><a href=index.jsp>返回首页</a></span></p>
         </div>
       </div>
     </div>

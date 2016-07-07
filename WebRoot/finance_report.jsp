@@ -51,6 +51,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       $axure.utils.getOtherPath = function() { return 'resources/Other.html'; };
       $axure.utils.getReloadPath = function() { return 'resources/reload.html'; };
     </script>
+    <style type="text/css">
+		body{text-align:center;}
+		div{width:778px;margin:0 auto;background:#fff;text-align:left;}
+	</style>
   </head>
   <body>
     <div id="base" class="">
