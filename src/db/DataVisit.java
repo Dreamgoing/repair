@@ -12,21 +12,6 @@ public class DataVisit {
     
 
 	private static Connection conn = null;
-	public void Connect(){
-		// TODO Auto-generated method stub
-		 String url = "jdbc:mysql://localhost:3306/finance?"
-	                + "user=root&password=123456&useUnicode=true&characterEncoding=UTF8";
-		
-		 try {
-			 Class.forName("com.mysql.jdbc.Driver");
-			 System.out.println("成功加载数据库驱动程序");
-			 setConn(DriverManager.getConnection(url));
-			 System.out.println("连接成功！");
-			 
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-	} 
 	static
     {
     	try {
